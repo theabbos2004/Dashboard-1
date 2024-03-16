@@ -8,12 +8,13 @@ import { navborIsActive } from '../../Reducer/MenuReducer'
 
 export default function Header() {
   let navborActive=useSelector(store=>store.menu.navborActive)
+  let windowsWidth=useSelector(store=>store.tools.windowsWidth)
   let dispatch=useDispatch()
   return (
     <div className={styles.Header}>
       <div className={styles.left}>
         {
-          window.innerWidth>576?""
+          windowsWidth > 768 ? ""
           :<button onClick={()=>dispatch(navborIsActive(!navborActive))} style={{background:"none",border:"none",outline:"none"}}>
             <MenuIcon color={navborActive?"var(--color-brand--3)":"var(--color-brand--4)"}/>
           </button>

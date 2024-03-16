@@ -7,7 +7,7 @@ import styles from "./index.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import Toggle from "../Toggle/Toggle";
 import { motion, easeInOut } from "framer-motion";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 export default function SignUpForm() {
   const navigate = useNavigate();
     const {errorSignUp,entred}=useSelector(store=>store.users)
@@ -18,12 +18,15 @@ export default function SignUpForm() {
         dispatch(handleActive({id: 1,title: "Dashboard",icon: "HomeIcon",focus: false,active: true,link: "/"})
         );
     }
-    useEffect(()=>{
+    const entredFunc=useCallback(()=>{
       if(entred){
-        reset()
-        navigate("/")
+          navigate("/")
+          reset()
       }
-    },[entred])
+    },[navigate,entred,reset])
+    useEffect(()=>{
+        entredFunc()
+    },[entredFunc])
   return (
     <motion.div
       animate={{rotateY:[180,0],opacity:[0,1]}}

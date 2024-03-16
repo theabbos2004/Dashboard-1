@@ -1,18 +1,21 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Box from "../Box/Box";
 import * as icon from '../../../assets/img/icon/index'
 import Button from "../Button/Button";
 export default function IntroMenu() {
+  let windowsWidth = useSelector((store) =>store?.tools?.windowsWidth);
   return (
     <Box
       sx={{
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
+        flexWrap:"wrap"
       }}
     >
       <div style={{ fontSize: "1.5rem" }}>VISION UI FREE</div>
-      <div style={{ display: "flex", gap: "2rem",color:"rgba(245,245,245,0.6)"}}>
+      <div style={{ display: windowsWidth > 567 ? "flex" : "none", gap: "2rem",color:"rgba(245,245,245,0.6)"}}>
         <div style={{ display: "flex", gap: "0.5rem", alignItems: "center"}}>
           <icon.OverviewIcon color="rgba(245,245,245,0.6)"/>
           <p>DASHBOARD</p>

@@ -4,11 +4,13 @@
     flex-direction: column;
     .money_section{
         display: flex;
+        flex-wrap: wrap;
         gap: 1rem;
     }
     .Rate_section,.Chart_section,.Projects_section{
         margin-top: 1rem;
         display: flex;
+        flex-wrap: wrap;
         gap: 1rem;
     }
     .Projects_section{
@@ -33,3 +35,8 @@
         }
     }
 }
+// @media only screen and (max-width:567px){
+//     .Chart_section{
+//         flex-direction: column;
+//     }
+// }

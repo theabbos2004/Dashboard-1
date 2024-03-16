@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import {SignUpActive,SignInFunc,} from "../../../Reducer/UsersReducer";
 import { handleActive } from "../../../Reducer/MenuReducer";
@@ -19,12 +19,15 @@ export default function SignInForm() {
         dispatch(SignInFunc({data}))
         dispatch(handleActive({id: 1,title: "Dashboard",icon: "HomeIcon",focus: false,active: true,link: "/"}));
     }
-    useEffect(()=>{
+    const entredFunc=useCallback(()=>{
         if(entred){
             navigate("/")
             reset()
         }
-    },[entred])
+    },[navigate,entred,reset])
+    useEffect(()=>{
+        entredFunc()
+    },[entredFunc])
   return (
     <motion.div
         animate={{rotateY:[180,0],opacity:[0,1]}}

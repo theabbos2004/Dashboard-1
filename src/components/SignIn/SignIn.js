@@ -7,14 +7,16 @@ import SignInForm from "../shared/SignInForm/SignInForm";
 import { easeIn, easeInOut, motion } from "framer-motion";
 
 export default function SignIn() {
-  let signUp = useSelector((store) =>store.users.signUp);
+  let signUp = useSelector((store) =>store?.users?.signUp);
+  let windowsWidth = useSelector((store) =>store?.tools?.windowsWidth);
   return (
     <section className={styles.SignIn_page}>
-      {window?.innerWidth > 567 && (
+      {windowsWidth > 768 && (
         <motion.div
-          className={styles.left_sector}
           animate={{width:["100%","50%"]}}
           transition={{duration:1,ease:easeIn}}
+          className={`${styles.left_sector}`}
+          style={{backgroundImage:`url(${require("../../assets/img/sign-in-bg.png")})`}}
         >
             <motion.div
               initial={{
@@ -40,7 +42,7 @@ export default function SignIn() {
       <div
         className={styles.right_sector}
       >
-        <div style={{ width: "50%", display: "flex", flexDirection: "column" }}>
+        <div style={{ width: windowsWidth > 768 ? "50%" : windowsWidth > 567 ? "30%" : "50%", display: "flex", flexDirection: "column" }}>
           {signUp ? (
             <div>
               <div style={{ textAlign: "center" }}>

@@ -1,4 +1,5 @@
 .SignIn_page{
+    background:linear-gradient(135deg,rgba(15, 18, 59, 1),rgba(2, 5, 21, 1));
     position: relative;
     width: 100%;
     height: 100vh;
@@ -7,7 +8,6 @@
 .left_sector{
     position: relative;
     height: 100%;
-    background-image: url("../../assets/img/sign-in-bg.png");
     background-position: center;
     background-size: cover;
     display: flex;
@@ -21,7 +21,6 @@
     height: 100%;
     width: 50%;
     padding: 5rem;
-    background:linear-gradient(135deg,rgba(15, 18, 59, 1),rgba(2, 5, 21, 1));
     color: var(--color-brand--4);
     display: flex;
     flex-direction: column;
@@ -52,7 +51,7 @@
         margin-bottom: 1rem;
     }
 }
-@media screen and (max-width: 567px) {
+@media screen and (max-width:768px) {
     .right_sector{
         width: 100%;
     }

@@ -6,9 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { handleFocus, handleActive } from "../../Reducer/MenuReducer";
 import Button from "../shared/Button/Button";
 import {SignInFunc} from "../../Reducer/UsersReducer"
+import { easeOut, motion } from "framer-motion";
 
 export default function Navbar({sx}){
   let { menu, accountMenu } = useSelector((store) => store.menu);
+  let navborActive=useSelector(store=>store.menu.navborActive)
   let dispatch = useDispatch();
   const geticon = (el) => {
     let IconComponent = icon[el.icon];
@@ -20,7 +22,12 @@ export default function Navbar({sx}){
     );
   };
   return (
-    <div className={styles.navbor+" container"} style={{sx}}>
+    <motion.div 
+      initial={sx}
+      className={styles.navbor+" container"} 
+      animate={{width:navborActive?["0%","15%"]:["15%","0%"]}}
+      transition={{duration:0.2,ease:easeOut}}
+      >
           <p className={styles.navbor_title}>VISION UI FREE</p>
           <hr />
           <ul className={styles.menu__list}>
@@ -96,7 +103,7 @@ export default function Navbar({sx}){
               </Button>
             </div>
           </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./index.module.scss";
-
+import { useSelector } from "react-redux";
 import * as icon from "../../assets/img/icon";
 import CircleDiagram from "../shared/CircleDiagram/CircleDiagram";
 import LinerChart from "../shared/Liner chart/LinerChart";
@@ -38,6 +38,7 @@ export default function Dashbord() {
       icon: "KorzinkaIcon",
     },
   ]); 
+  let windowsWidth = useSelector((store) =>store?.tools?.windowsWidth);
   const getIcon = (el, width = 16, sWidth = 11, height = 16, sHeight = 11) => {
     let Icon = icon[el];
     return (
@@ -56,6 +57,7 @@ export default function Dashbord() {
             key={index}
             from={{ transform: "translateY(2rem)", opacity: "0" }}
             to={{ transform: "translateY(0rem)", opacity: "1" }}
+            sx={{flex:windowsWidth>567? "auto":"48%"}}
           >
             <div
               style={{
@@ -295,14 +297,14 @@ export default function Dashbord() {
         <Box
           from={{ transform: "translateY(2rem)", opacity: "0" }}
           to={{ transform: "translateY(0rem)", opacity: "1" }}
-          sx={{ width: "50%", justifyContent: "center" }}
+          sx={{ width: windowsWidth>567?"48%":"100%", justifyContent: "center" }}
         >
           <LinerChart />
         </Box>
         <Box
           from={{ transform: "translateY(2rem)", opacity: "0" }}
           to={{ transform: "translateY(0rem)", opacity: "1" }}
-          sx={{ width: "50%" }}
+          sx={{ width: windowsWidth>567?"48%":"100%" }}
         >
           <div>
             <Chart />

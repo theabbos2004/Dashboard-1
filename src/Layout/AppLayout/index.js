@@ -18,7 +18,7 @@ function AppLayout() {
   return (
     <div className={styles.layout}>
       {navborActive?<Navbar/>:""}
-      <div style={{width:navborActive ? "85%" : "100%",display:'flex',flexDirection:"column",gap:'1rem'}}>
+      <div style={{width:navborActive ? "85%" : "100%",display:'flex',flexDirection:"column",gap:'1rem',transition:"width 0.2s ease-out"}}>
         <Header/>
         <PrivateRoute/>
         <Footer sx={{minHeight:"2rem",display:"flex",alignItems:"center",justifyContent:"space-between",color:"white"}}/>
